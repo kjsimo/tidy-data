@@ -21,9 +21,11 @@ xtable(raw[1:10, 1:11], file = "tb-raw.tex")
 # Melt -----------------------------------------------------------------------
 
 clean <- melt(raw, id = c("country", "year"), na.rm = TRUE)
+# renames column headers for 3rd and 4th column
 names(clean)[3] <- "column"
 names(clean)[4] <- "cases"
 
+#sorts clean by country, column, year
 clean <- arrange(clean, country, column, year)
 xtable(clean[1:15, ], file = "tb-clean-1.tex")
 
